@@ -1,0 +1,30 @@
+
+
+<div class="container">
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading" style="font-weight:500;padding:12px 8px;">
+      Message Inbox
+      <button type='button' class='btn btn-default pull-right' style="margin-top:-6px;" data-toggle='modal' data-target='#compose'>Compose</button>
+    </div>
+    <!-- Table -->
+    <table class="table">
+      <tbody>
+        <% @message_threads.each do |m| %>
+        <tr >
+          <td style="width:30%;"><%= m.recipient(current_user) %></br>
+          </td>
+          <td style="width:50%;">
+            <b><%= link_to "Title", message_path(m.id) %></b>
+          </br>
+          <em><%= m.content %></em>
+        </td>
+        <td style="width:20%;"><%= Message.display_date(m.created_at, "linebreak") %></td>
+
+      </tr>
+      <% end %> 
+    </tbody> </table>
+  </div>
+</div>
+
+<%= render partial: "new" %>

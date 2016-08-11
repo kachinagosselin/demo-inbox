@@ -1,0 +1,20 @@
+<h1>New Message</h1>
+<%= form_for @message do |f| %>
+  <div class='form-group'>
+    <%= f.label :content, class: 'col-md-2 col-sm-2 control-label' %>
+    <div class='col-md-10 col-sm-10'>
+      <%= f.text_area :content, autofocus: true, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class='form-group'>
+    <div class='pull-right form-buttons'>
+      <% if @message.persisted? %>
+        <a href='#' class='js-cancel-form-job-seeker'>Cancel</a>
+        <%= f.submit  'Save Changes', class: 'btn btn-primary' %>
+      <% else %>
+        <%= f.submit  'Send Message', class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

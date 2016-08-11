@@ -16,9 +16,9 @@ development:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: equicentre_development
+  database: demo-inbox
   pool:     5
-  username: equicentre
+  username: postgres
   password:
   template: template0
 
@@ -40,22 +40,4 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  adapter:  postgresql
-  host:     localhost
-  encoding: unicode
-  database: equicentre_test
-  pool:     5
-  username: equicentre
-  password:
-  template: template0
 
-production:
-  adapter:  postgresql
-  host:     localhost
-  encoding: unicode
-  database: equicentre_production
-  pool:     5
-  username: equicentre
-  password:
-  template: template0

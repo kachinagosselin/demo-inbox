@@ -1,10 +1,37 @@
-<% if user_signed_in? %>
-  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-  <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
-<% else %>
-  <li><%= link_to 'Sign in', new_user_session_path %></li>
-  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+
+<% if !user_signed_in? %>
+<li><%= link_to 'Sign In', new_user_session_path%></li>
+<li><%= link_to 'Register', new_user_registration_path, class: "btn btn-primary", id: "register"  %></li>
 <% end %>
+<!-- <% if user_signed_in? %>
+<li><%= link_to 'Users', users_path %></li>
+<% end %>
+-->
 <% if user_signed_in? %>
-  <li><%= link_to 'Users', users_path %></li>
+<li><span id="notifications" class="glyphicon glyphicon-bell nav-icon" aria-hidden="true"></span></li>
+<li><span id="counter"><%= Message.all.count %></span>
+<span id="inbox" class="glyphicon glyphicon-envelope nav-icon" aria-hidden="true"></span>
+</li>
+<li>
+	<div class="dropdown">
+		<button class="btn btn-lg btn-default dropdown-toggle" type="button" id="nav-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			<div id="dropdown-avatar" class="col-md-3">
+				<%= image_tag "/default_user.png", :class => "img-circle"%>
+			</div>
+			<div id="dropdown-name" class="col-md-5">
+				Kachina 
+			</div>
+			<div class="col-md-2">
+				<span class="nav-icon glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+			</div>
+		</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			<% if user_signed_in? %>
+			<li><%= link_to 'Edit account', edit_user_registration_path %></li>
+			<li role="separator" class="divider"></li>
+			<li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+			<% end %>			
+		</ul>
+	</div>
+</li>
 <% end %>
